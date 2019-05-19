@@ -1,5 +1,6 @@
-<h1>Order#order_status_update_notification</h1>
+<h1>Order was updated</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/order_mailer/order_status_update_notification.html.erb
+  <%= @greeting %>, your order was updated. Go and check it 
+  <a href="<%= 'https://jul-app-frontend.herokuapp.com/' + @order.id.to_s %>">go</a> 
 </p>

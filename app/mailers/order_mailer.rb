@@ -5,9 +5,10 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.order_status_update_notification.subject
   #
-  def order_status_update_notification
+  def order_status_update_notification(order)
     @greeting = "Hi"
-
+    @order = order
+    
     mail to: "vania.kabashnikov@gmail.com"
   end
 end

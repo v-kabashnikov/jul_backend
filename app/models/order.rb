@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   private
   def update_order
     serialized_order = OrderSerializer.new(self).as_json
-    OrderMailer.order_status_update_notification().deliver
+    OrderMailer.order_status_update_notification(self).deliver
     OrdersChannel.broadcast_to(self, serialized_order)
   end
 end
