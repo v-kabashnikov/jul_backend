@@ -1,12 +1,28 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
+  before_action :set_order, only: [:show, :edit]
   
   def index
-    #TODO remove
-    order = Order.find(2)
+  end
+
+  # GET	/orders/:id/edit
+  # for testing puproses
+  # randomly changes order status
+  def edit
     name = rand(1...100).to_s + "_order"
-    order.update(name: name)
-    render json: {status: 'updated'}
+    status_randomizer = rand(1..4)
+    case status_randomizer
+    when 1
+      status = { received: "completed", packing: "completed", delivering: "current", complete: ''}.to_json
+    when 2
+      status = { received: "completed", packing: "completed", delivering: "completed", complete: "current"}.to_json
+    when 3
+      status = { received: "completed", packing: "current", delivering: "", complete: ""}.to_json
+    when 4
+      status = { received: "current", packing: "", delivering: "", complete: ""}.to_json
+    end
+    @order.status = status
+    @order.save
+    render json: status
   end
 
   # GET /orders/1

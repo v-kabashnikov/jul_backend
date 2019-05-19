@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-order = Order.create(name:"Hi Order", company_address:"Oakland", pickup_point: "Tel-Aviv")
+status = { received: "completed", packing: "completed", delivering: 'current', complete: ''}.to_json
+order = Order.create(name:"Hi Order", company_address:"Oakland", pickup_point: "Tel-Aviv", status: status)
 5.times do 
   Item.create(name: "item-#{rand(1...100)}", quantity: rand(1...10), order: order)
 end
