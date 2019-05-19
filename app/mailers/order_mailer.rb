@@ -9,6 +9,6 @@ class OrderMailer < ApplicationMailer
     @greeting = "Hi"
     @order = order
     
-    mail to: "vania.kabashnikov@gmail.com"
+    mail to: ENV['SUBSCRIBER_EMAIL_ADDRESS']
   end
 end
